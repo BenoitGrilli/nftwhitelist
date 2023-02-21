@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ethers} from 'ethers';
 import './App.css';
 
+// Connecter MetaMask en LocalHost
 function App() {
 
   const [loader, setLoader] = useState(true);
