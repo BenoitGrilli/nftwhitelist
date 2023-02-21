@@ -46,6 +46,7 @@ function App() {
       const balance = await provider.getBalance(accounts[0]);
       const balanceInEth = ethers.utils.formatEther(balance);
       console.log(balanceInEth);
+      setBalance(balanceInEth);
     }
   }
 
@@ -53,7 +54,13 @@ function App() {
     <div className="App">
         {!loader && 
           accounts.length > 0 ?
-          <p>You are connected with this account : {accounts[0]}</p>
+          <div>
+            <p>You are connected with this account : {accounts[0]}</p>
+            {balance && <p> You have {balance} Eth in your account</p>}
+            {balance < 0.2 && <p className='infos'> Not Enough ETH to be white liste</p>}
+          </div>
+   
+          
           :
           <p>You are not connected with Metamask on this website.</p>
         }
