@@ -41,7 +41,11 @@ function App() {
     if(typeof window.ethereum !== 'undefined') {
       let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
       setAccounts(accounts);
-
+// récupérer la balance du compte
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const balance = await provider.getBalance(accounts[0]);
+      const balanceInEth = ethers.utils.formatEther(balance);
+      console.log(balanceInEth);
     }
   }
 
